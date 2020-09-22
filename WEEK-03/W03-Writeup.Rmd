@@ -3,12 +3,12 @@ title: "Week 03 Assignment 02_datasets"
 author: "Isaac Schultz"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
+  html_document:
+    df_print: paged
   pdf_document:
     citation_package: natbib
     latex_engine: pdflatex
     template: ./../latex-templates/homework.tex
-  html_document:
-    df_print: paged
 course: "STATS 419 Survey of Multivariate Analysis"
 course-short: STATS419
 instructor: Monte J. Shaffer
@@ -77,15 +77,11 @@ rotateMatrix270(myMatrix);
 Recreate the graphic for the IRIS Data Set using R.  Same titles, same scales, same colors.  See: https://en.wikipedia.org/wiki/Iris_flower_data_set#/media/File:Iris_dataset_scatterplot.svg
 
 ```{r,mychunk-iris-demo}
+library(datasets);
+data(iris)
 
-Sepal.Length <- rnorm(10);
-Sepal.Width <- rnorm(10);
-Petal.Length <- rnorm(10);
-Petal.Width <- rnorm(10);
+plot(iris[,1:4], main="Iris Data (red=setosa.green=versicolor,blue=virginica)", col=c("darkred", "darkgreen", "darkblue"), pch=16);
 
-df = data.frame(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width);
-
-plot(df, main="Iris Data (red=setosa.green=versicolor,blue=virginica)", );
 
 ```
 
