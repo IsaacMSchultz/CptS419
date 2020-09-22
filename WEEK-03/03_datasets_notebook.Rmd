@@ -76,7 +76,7 @@ Petal.Width <- rnorm(10);
 
 df = data.frame(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width);
 
-plot(df, main="Iris Data (red=setosa.green=versicolor,blue=virginica)");
+plot(df, main="Iris Data (red=setosa.green=versicolor,blue=virginica)", );
 
 ```
 
@@ -88,7 +88,21 @@ Sentences:  [Right 2-3 sentences concisely defining the IRIS Data Set.  Maybe se
 ## Cleanup RAW
 Import "personality-raw.txt" into R.  Remove the V00 column.  Create two new columns from the current column "date_test":  year and week. Stack Overflow may help:  https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ... Sort the new data frame by YEAR, WEEK so the newest tests are first ... The newest tests (e.g., 2020 or 2019) are at the top of the data frame.  Then remove duplicates using the unique function based on the column "md5_email".  Save the data frame in the same "pipe-delimited format" ( | is a pipe ) with the headers.  You will keep the new data frame as "personality-clean.txt" for future work (you will not upload it at this time).  In the homework, for this tasks, report how many records your raw dataset had and how many records your clean dataset has.
 
-
+```{r, mychunk-cleanup}
+my_data <- read.table(file.choose(), sep ="|", header = TRUE, dec =".")
+ 
+df = subset(my_data, select = -c(V00));
+ 
+new_data <- within(df, {
+    dates <- strptime(date_test, format="%m/%d/%Y %H:%M");
+    years <- format(dates, "%Y");
+    weeks <- format(dates, "%V");
+});
+ 
+clean_data <- new_data[order(new_data$years, new_data$weeks),];
+ 
+clean_data = subset(clean_data, select = -c(dates));
+```
 
 # Variance and Z-scores 
 
