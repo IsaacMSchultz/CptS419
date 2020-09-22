@@ -1,6 +1,6 @@
 ---
 title: "Week 03 Assignment 02_datasets"
-author: "YOUR NAME HERE"
+author: "Isaac Schultz"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   pdf_document:
@@ -12,8 +12,8 @@ output:
 course: "STATS 419 Survey of Multivariate Analysis"
 course-short: STATS419
 instructor: Monte J. Shaffer
-email: WSU email HERE
-wsu-id: WSU ID HERE
+email: isaac.schultz@wsu.edu
+wsu-id: 11583435
 fig_caption: true
 number_sections: true
 ---

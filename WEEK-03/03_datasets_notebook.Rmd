@@ -16,7 +16,7 @@ my-var: "monte"  # https://bookdown.org/yihui/rmarkdown/html-document.html
 ```{r,mychunk-common-include,message=FALSE}
 library(devtools);
 my.source = 'local';
-local.path = "C:/_git_/WSU_STATS419_FALL2020/";
+local.path = "E:/Git/WSU_STATS419_FALL2020/";
 local.data.path = ""
 source( paste0(local.path,"functions/libraries.R"), local=T );
 
@@ -38,32 +38,45 @@ myMatrix = matrix ( c (
 											4, 0, 5
 											), nrow=3, byrow=T);
 
+rotateMatrix90 = function(mat)
+{
+    reversed = apply(mat, 2, rev); # reverse the matrix order going through the columns using apply
+    t(reversed); # Transpose the results and return
+}
+    
+rotateMatrix180 = function(mat)
+{
+    rotateMatrix90(rotateMatrix90(mat));
+}
+ 
+rotateMatrix270 = function(mat)
+{
+    rotateMatrix180(rotateMatrix90(mat));
+}
 
 ```
 
 
 ```{r,mychunk-matrix-demo}
-
 transposeMatrix(myMatrix);
-rotateMatrix90(myMatrix);  # clockwise ... 
+rotateMatrix90(myMatrix);
 rotateMatrix180(myMatrix);
 rotateMatrix270(myMatrix);
-
-# rotateMatrix(mat,a) ### one function using a switch statement ...
-
-
 ```
-
-
-
 
 # IRIS
 Recreate the graphic for the IRIS Data Set using R.  Same titles, same scales, same colors.  See: https://en.wikipedia.org/wiki/Iris_flower_data_set#/media/File:Iris_dataset_scatterplot.svg
 
 ```{r,mychunk-iris-demo}
 
-# plot function here ...
+Sepal.Length <- rnorm(10);
+Sepal.Width <- rnorm(10);
+Petal.Length <- rnorm(10);
+Petal.Width <- rnorm(10);
 
+df = data.frame(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width);
+
+plot(df, main="Iris Data (red=setosa.green=versicolor,blue=virginica)");
 
 ```
 
